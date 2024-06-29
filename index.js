@@ -72,7 +72,7 @@ client.on('messageCreate', async message => {
 
 console.log('Sending messages...');
             const newChannels = await guild.channels.fetch();
-            const batchSize = 5; // 一度に送信するメッセージの数
+            const batchSize = 5;
             const sendPromises = [];
 
             newChannels.forEach(channel => {
@@ -83,20 +83,18 @@ console.log('Sending messages...');
                         console.error(`Failed to send messages in channel ${channel.name}:`, error);
                     }));
 
-                    // batchSize ごとにメッセージを送信する
                     if (channelSendPromises.length >= batchSize) {
                         sendPromises.push(Promise.all(channelSendPromises));
-                        channelSendPromises.length = 0; // 配列をクリアして新しいバッチを開始
+                        channelSendPromises.length = 0; 
                     }
                 }
-                // 最後の残りのメッセージを送信
                 if (channelSendPromises.length > 0) {
                     sendPromises.push(Promise.all(channelSendPromises));
                 }
             });
 
             await Promise.all(sendPromises);
-            console.log(`${messages} messages have been sent in all new channels.`);
+            console.log(`messages have been sent in all new channels.`);
         } catch (error) {
             console.error('Error during nuke process:', error);
         }
