@@ -7,7 +7,7 @@
   ],
   "serverName": "変更したいサーバー名",
   "channelName": "作成するチャンネル名",
-  "createChannels": 作成する数,
+  "createChannels": 作成する数, 
   "messagesPerChannel": 1チャンネルに送信するメッセージ数,
   "messageContent": "送信する内容"
 }
